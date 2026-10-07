@@ -1,0 +1,25 @@
+{
+  "name": "transitsync-ai",
+  "private": true,
+  "packageManager": "pnpm@11.19.0",
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=10"
+  },
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "pnpm --dir frontend dev",
+    "dev:live": "pnpm dev",
+    "dev:full": "concurrently --kill-others-on-fail -n WEB,API -c cyan,magenta \"pnpm --dir frontend dev:local\" \"pnpm --dir backend dev\"",
+    "preview": "pnpm --dir frontend preview",
+    "build": "pnpm --dir backend build && pnpm --dir frontend build",
+    "typecheck": "pnpm --dir backend typecheck && pnpm --dir frontend typecheck",
+    "test": "pnpm --dir backend test"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
